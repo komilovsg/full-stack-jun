@@ -1,4 +1,9 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import path from 'path';
+// Загружаем .env из корня проекта (если бот запущен из папки bot/)
+const rootEnv = path.resolve(process.cwd(), '../.env');
+dotenv.config({ path: rootEnv });
+dotenv.config(); // затем из текущей папки (bot/.env)
 import { Telegraf, Context } from 'telegraf';
 import { connectRedis, testPostgresConnection } from './config/database';
 import { User } from './models/User';
